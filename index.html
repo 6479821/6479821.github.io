@@ -71,6 +71,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/23/php2/" class="article-date">
+  <time class="dt-published" datetime="2025-12-23T13:13:34.000Z" itemprop="datePublished">2025-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/12/23/php2/">php2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="php函数"><a href="#php函数" class="headerlink" title="php函数"></a>php函数</h1><p>函数在程序中可以重复使用</p>
+<p>页面加载时函数不会立即执行</p>
+<p>函数只有在被调用时才会执行</p>
+<p>自定义函数时要以function开头</p>
+<p>函数名只能以字母或下划线开头</p>
+<p>函数名对大小写不敏感</p>
+<h4 id="无参数的函数"><a href="#无参数的函数" class="headerlink" title="无参数的函数"></a>无参数的函数</h4><p>function getname(){</p>
+<p>return ‘asdf’;</p>
+<p>}</p>
+<p>echo getname();</p>
+<h4 id="有参数的函数"><a href="#有参数的函数" class="headerlink" title="有参数的函数"></a>有参数的函数</h4><p>function getname（$name）{</p>
+<p>return $name;</p>
+<p>}</p>
+<p>echo getname(name:‘asdf’);</p>
+<h4 id="形参有默认值的有参数的函数"><a href="#形参有默认值的有参数的函数" class="headerlink" title="形参有默认值的有参数的函数"></a>形参有<u>默认值</u>的有参数的函数</h4><p>   function getname（$name&#x3D;‘asdf’）{</p>
+<p>return $name;</p>
+<p>}</p>
+<p>echo getname(name:’demo‘);\（输出为demo）</p>
+<p>echo getname();\（输出为asdf）</p>
+<h4 id="没有参数的匿名函数"><a href="#没有参数的匿名函数" class="headerlink" title="没有参数的匿名函数"></a>没有参数的匿名函数</h4><p>$callfunction&#x3D;function(){</p>
+<p>return ‘asdf’；</p>
+<p>}；</p>
+<p>echo $callfunction();</p>
+<h4 id="有参数的匿名函数"><a href="#有参数的匿名函数" class="headerlink" title="有参数的匿名函数"></a>有参数的匿名函数</h4><p>$callfunction&#x3D;function($name){</p>
+<p>return $name；</p>
+<p>}；</p>
+<p>echo $callfunction(name:’asdf’); </p>
+<h1 id="isset-函数"><a href="#isset-函数" class="headerlink" title="isset()函数"></a>isset()函数</h1><p>作用：判断一个变量是否已定义且不为“NULL“</p>
+<p>即同时满足变量存在并且值不为null则返回ture，否则返回false</p>
+<h1 id="intvla函数"><a href="#intvla函数" class="headerlink" title="intvla函数"></a>intvla函数</h1><p>intval(mixed $var, int $base &#x3D; 10): in</p>
+<p>作用：$var为要转换的值，$base为转换的进制（默认为十进制）</p>
+<p>若$var为字符串，他会从字符串的开始部分解析数字，直到遇到非数字字符为止（例如：”123abc“转化为123）</p>
+<p>若为浮点数，则会截断小数部分，返回整数部分（例如3.14转化为3）</p>
+<p>如果字符串以非数字字符开头，则返回0</p>
+<p>空字符串会被转化为0</p>
+<p>ture转化为1，flase转化为0</p>
+<p>如果传入一个数组，也会返回0（数组不是数字）</p>
+<p>null会转化为0</p>
+<h1 id="strlen函数"><a href="#strlen函数" class="headerlink" title="strlen函数"></a>strlen函数</h1><p>作用：返回字符串长度（包括空格与标点符号）</p>
+<p>strlen（）函数的返回值为字符串的<u>字节数</u> </p>
+<p>对于单字节编码（如ASCLL），每个字字符通常对应一个字节</p>
+<p>对于多字节编码（例如UTF-8），一些字符可能会占用多个字节</p>
+<p>若传入空字符串则返回0</p>
+<p>若传入一个非字符串，则会将其转化为字符串</p>
+<h1 id="substr函数"><a href="#substr函数" class="headerlink" title="substr函数"></a>substr函数</h1><p>作用：从一个给定的字符串中提取字符串，需指定提取的位置和长度</p>
+<p>substr(string $string, int $start, int $length &#x3D; ?): string</p>
+<p>$string为要截取的原始字符串</p>
+<p>$start为开始截取的位置，可以是整数（从字符串开头计数），可以是负数（从字符串末尾计数）</p>
+<p>$length为要截取的长度，默认会截取从$start位置到字符串结尾的部分，如果是负数，则表示截取的长度是从末尾向前算</p>
+<h1 id="is-array-函数"><a href="#is-array-函数" class="headerlink" title="is_array()函数"></a>is_array()函数</h1><p>判断是否为数组，是则返回 1</p>
+<h1 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h1><p>判断是否为数字，是则返回1</p>
+<h1 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h1><p>判断数组中含有几个元素</p>
+<h1 id="运算条件符"><a href="#运算条件符" class="headerlink" title="运算条件符"></a>运算条件符</h1><p>条件？真时执行的语句：假时执行的语句；</p>
+<h1 id="array-search函数"><a href="#array-search函数" class="headerlink" title="array_search函数"></a>array_search函数</h1><p>在PHP中查找特定的值，会返回找到的值的下标，若没找到则返回false</p>
+<p>mixed array_search(mixed $needle, array $haystack, bool $strict &#x3D; false);</p>
+<p>$needle为要查找的元素，可以为任意类型</p>
+<p>$haystack为在其中查找的数组</p>
+<p>$strict默认为false即进行若比较（&#x3D;&#x3D;），若为ture则进行强比较（&#x3D;&#x3D;&#x3D;）</p>
+<h1 id="foreach函数"><a href="#foreach函数" class="headerlink" title="foreach函数"></a>foreach函数</h1><p>遍历数组</p>
+<p>foreach ($array as $key &#x3D;&gt; $value) {<br>    &#x2F;&#x2F; 对每个元素的操作<br>}</p>
+<p>$array为需要遍历的数组</p>
+<p>$key为当前元素的键</p>
+<p>$value为当前元素的值</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/23/php2/" data-id="cuid55L60srdV3ZLPl1iqmZp9" data-title="php2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-php1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/12/16/php1/" class="article-date">
@@ -569,6 +670,10 @@
       <ul>
         
           <li>
+            <a href="/2025/12/23/php2/">php2</a>
+          </li>
+        
+          <li>
             <a href="/2025/12/16/php1/">php1</a>
           </li>
         
@@ -582,10 +687,6 @@
         
           <li>
             <a href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a>
-          </li>
-        
-          <li>
-            <a href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/">post11.15(sql注入)</a>
           </li>
         
       </ul>
