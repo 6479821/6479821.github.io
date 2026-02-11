@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>文件上传漏洞 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="如何预防（文件上传校验方式）前端校验在浏览器校验与后端无关，无法用bp抓包（只在浏览器校验，不会发送请求） WAF校验防火墙 后端校验服务端1  检查后缀：白名单和黑名单 2  检查内容：文件头，大小等 3  其他 如何绕过判断校验方式（属于前端校验还是后端校验） 看浏览器是否有给服务器发请求 上传文件后若发现左上角刷新按钮（圈圈）在转，说明向后端发送了请求，即为后端校验，反之为前端校验 前端校验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件上传漏洞">
+<meta property="og:url" content="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如何预防（文件上传校验方式）前端校验在浏览器校验与后端无关，无法用bp抓包（只在浏览器校验，不会发送请求） WAF校验防火墙 后端校验服务端1  检查后缀：白名单和黑名单 2  检查内容：文件头，大小等 3  其他 如何绕过判断校验方式（属于前端校验还是后端校验） 看浏览器是否有给服务器发请求 上传文件后若发现左上角刷新按钮（圈圈）在转，说明向后端发送了请求，即为后端校验，反之为前端校验 前端校验">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-11-22T09:34:32.000Z">
+<meta property="article:modified_time" content="2025-11-24T14:54:00.787Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-文件上传漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time class="dt-published" datetime="2025-11-22T09:34:32.000Z" itemprop="datePublished">2025-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      文件上传漏洞
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="如何预防（文件上传校验方式）"><a href="#如何预防（文件上传校验方式）" class="headerlink" title="如何预防（文件上传校验方式）"></a>如何预防（文件上传校验方式）</h1><h2 id="前端校验"><a href="#前端校验" class="headerlink" title="前端校验"></a>前端校验</h2><p>在浏览器校验与后端无关，无法用bp抓包（只在浏览器校验，不会发送请求）</p>
+<h2 id="WAF校验"><a href="#WAF校验" class="headerlink" title="WAF校验"></a>WAF校验</h2><p>防火墙</p>
+<h2 id="后端校验"><a href="#后端校验" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>1  检查后缀：白名单和黑名单</p>
+<p>2  检查内容：文件头，大小等</p>
+<p>3  其他</p>
+<h1 id="如何绕过"><a href="#如何绕过" class="headerlink" title="如何绕过"></a>如何绕过</h1><p>判断校验方式（属于前端校验还是后端校验）</p>
+<p>看浏览器是否有给服务器发请求</p>
+<p>上传文件后若发现左上角刷新按钮（圈圈）在转，说明向后端发送了请求，即为后端校验，反之为前端校验</p>
+<h2 id="前端校验-1"><a href="#前端校验-1" class="headerlink" title="前端校验"></a>前端校验</h2><p>所有的前端校验等于没有</p>
+<p><u><em>绕过方式</em> </u> </p>
+<p>1  可以右键网页点击检查（F12），点击设置，找到调试程序，勾选停用JavaScript，即可上传其他后缀名的文件</p>
+<p>原理：前端校验使用的编程语言为JavaScript，停用JavaScript后校验失效</p>
+<p>2  F12找到校验函数删除即可，例：onsubmit&#x3D;“return checkFile（）”，删除“return checkFile（）”即可（在谷歌与edge浏览器中一般不适用，火狐可用）</p>
+<h2 id="后端校验-1"><a href="#后端校验-1" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="MIME类型检测"><a href="#MIME类型检测" class="headerlink" title="MIME类型检测"></a>MIME类型检测</h2><p>MIME是描述消息内容类型的因特网标准，用来表示文档，文件或字节流的性质和格式。在HTTP数据包中在Content-Type字段显示</p>
+<p>常见的MIME类型（通用型）：</p>
+<p>1  超文本标记语言.html文件：text&#x2F;html</p>
+<p>2  xml文档.xml：text&#x2F;xml</p>
+<p>3  普通文本.txt：text&#x2F;plain</p>
+<p>4  PDF文档.pdf：application&#x2F;pdf</p>
+<p>5  PNG 图像.png：image&#x2F;png</p>
+<p>6  GIF图形.gif：image&#x2F;gif</p>
+<p>7  JPEG图形.jpeg.jpg：image&#x2F;jpeg</p>
+<p>绕过方式：</p>
+<p>1（后端过滤，在服务端对数据包的MIME进行检查）   用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到第二个Content-Type字段，将其内容改为image&#x2F;png，例如  Content-Type：application&#x2F;octet-stream改为Content-Type：image&#x2F;png</p>
+<p>2 （后端文件名过滤，禁止上传.asp|.aspx|.php|.jsp后缀文件） 用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到Content-Dispositoin，在文件明后添加：：$DATA  </p>
+<p>若源代码中存在函数检验：：$DATA若发现则替换其为空字符，则可以进行双写</p>
+<p>访问url时要将url中的$DATA删除才可正常访问</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="cuidpqutQhErUGdW5wbv5u8lv" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第四周的笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">post11.15(sql注入)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/">sql注入1</a>
+          </li>
+        
+          <li>
+            <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/29/php3/">php3</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/23/php2/">php2</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/16/php1/">php1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

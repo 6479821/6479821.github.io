@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-sql注入1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/" class="article-date">
+  <time class="dt-published" datetime="2026-02-11T05:42:15.000Z" itemprop="datePublished">2026-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/">sql注入1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/02/11/sql%E6%B3%A8%E5%85%A51/" data-id="cuidqgo46ZBHQiMPlH4HZ17zw" data-title="sql注入1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-数据库1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" class="article-date">
+  <time class="dt-published" datetime="2026-02-02T07:48:42.000Z" itemprop="datePublished">2026-02-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><em>数据库就相当于文件夹，表就相当于文件</em></p>
+<h1 id="MySQL的登入"><a href="#MySQL的登入" class="headerlink" title="MySQL的登入"></a>MySQL的登入</h1><p>打开MySQL根目录并进入bin文件夹，记住该文件夹的位置（D:\phpstudy_pro\Extensions\MySQL5.7.26\bin）</p>
+<p>Win+r 输入cmd打开后输入cd&#x2F;d D:\phpstudy_pro\Extensions\MySQL5.7.26\bin</p>
+<p>输入dir</p>
+<p>输入msql -u+账号 -p+密码 -h+ip地址（若为本地ip为127.0.0.1）后登入完成</p>
+<p>可以输入help来查看可使用的命令</p>
+<p>退出的方式有三种</p>
+<p>1.mysql&gt;exit;</p>
+<p>2.mysql&gt;quit;</p>
+<p>3.mysql&gt;\q;</p>
+<p>mysql的注释符有三种</p>
+<p>1.#…</p>
+<p>2.”–  …”</p>
+<p>3.&#x2F;*…*&#x2F;</p>
+<h1 id="数据库的一些基本操作-要登入数据库后才可以使用"><a href="#数据库的一些基本操作-要登入数据库后才可以使用" class="headerlink" title="数据库的一些基本操作(要登入数据库后才可以使用)"></a>数据库的一些基本操作(要登入数据库后才可以使用)</h1><h4 id="数据库的增删改查（sql语句）"><a href="#数据库的增删改查（sql语句）" class="headerlink" title="数据库的增删改查（sql语句）"></a>数据库的增删改查（sql语句）</h4><p>增：create database db1；</p>
+<p>删：drop database db1；</p>
+<p>改：alert database db1 charest utf8</p>
+<p>查：show databases；（查看所有数据库）</p>
+<p>show create database db1;  （查询指定的数据库创建时的信息）</p>
+<p>select database；（查看你当前在哪个文件夹）</p>
+<p>show status;(显示一些系统特定的资源信息)</p>
+<p>use db1;(选择数据库)</p>
+<p>show tables;(查看当前库里所有的表)</p>
+<p>desc tabl_name;（显示表结构，字段类型，主键，是否为空等属性，但不对外显示）</p>
+<p>select authentication_string,use from mysql.user;(查看当前数据库里面的表user用户为root的密码)</p>
+<h1 id="建立表"><a href="#建立表" class="headerlink" title="建立表"></a>建立表</h1><p><u>建表前要先选择数据库</u></p>
+<p>create table 表名（</p>
+<p> 属性名 数据类型 [完整约束条件]，</p>
+<p>属性名 数据类型 [完整约束条件]，</p>
+<p>……</p>
+<p>……</p>
+<p>属性名 数据类型 [完整约束条件]，</p>
+<p>);</p>
+<p>字段名就是属性名</p>
+<p>完整表的建立语句</p>
+<p>create table users(id int(7) AUTO_INCREMENT,</p>
+<p>                                          username varchar(100) not null,</p>
+<p>                                          password varchar(100) not null,</p>
+<p>                                          PRIMARY KEY(id)</p>
+<p>                                          )ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;</p>
+<p>create table为关键字  users为表名</p>
+<p>PRIMARY KEY(id)表示设置id为主键</p>
+<p>ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;设置数据库的引擎</p>
+<p>常见的数据库引擎 InnoDB myisam</p>
+<p><strong>create table users(id int(7) UNSIGNED auto_increment,username varchar(30) not null,password varchar(32) not null,email varchar(40),primary key(id))engine&#x3D;myisam default charset&#x3D;utf8;</strong> (以下笔记根据这串代码建立的表为准)</p>
+<p>如果出现if not exists语句则表示当相同表名存在时，则不执行此创建语句，避免语句执行错误</p>
+<h4 id="约束条件"><a href="#约束条件" class="headerlink" title="约束条件"></a>约束条件</h4><p>PRIMARY KEY 标识该属性为该表的主键，可以唯一的标识对应的元组</p>
+<p>FOREIGN KETY 标识该属性为该表的外键，是与之联系某表的主键</p>
+<p>NOT NULL 标识该属性不能为空</p>
+<p>UNIQUE  标识该属性的值是唯一的</p>
+<p>AUTO_INCREMENT 标识该属性的值是自动增加的</p>
+<p>DEFAULT 为该属性设置默认值</p>
+<p>UNSIGNED 标识该属性无符号，即不为负值</p>
+<h1 id="修改表的操作"><a href="#修改表的操作" class="headerlink" title="修改表的操作"></a>修改表的操作</h1><p>要先选择数据库</p>
+<p>修改表名</p>
+<p>alter table 旧表名  rename 新表名;</p>
+<p>修改字段的数据类型</p>
+<p>alter table 表名 modify 属性名 数据类型;</p>
+<p>修改字段名</p>
+<p>alter table 表名 change 旧属性名 新属性名 新数据类型；</p>
+<p>增加字段名</p>
+<p>alter table 表名 add 属性名1 数据类型 [完整性约束条件] [（first)  | (after属性名2)];</p>
+<p>first 将添加的字段放在表头、</p>
+<p>after属性名2 将添加的字段放在属性名2之后</p>
+<p>删除字段</p>
+<p>alter table 表名 drop 删除名</p>
+<p>更改表的存储引擎</p>
+<p>alter table 表名 engine&#x3D;存储引擎名</p>
+<p>为表中字段添加数据</p>
+<p>mysql&gt;insert into 表名(字段名，字段名，)value(要添加的数据)</p>
+<p>insert into users(id,username,password)values(1,’moon’,’123456’);</p>
+<p>删除表中数据</p>
+<p>delete from 表名 [where 条件表达式]；</p>
+<p>delete from users where id &#x3D;1;</p>
+<p>若delete语句中没有使用where语句，则会将表中所有数记录删除</p>
+<p>更新(修改表中字段的数据)</p>
+<p>update 表名 set 字段名1&#x3D;值1，[，字段名2&#x3D;值2][where条件表达式]</p>
+<p>update users set password&#x3D;’aaaa’ where id&#x3D;1;</p>
+<p>update users set password&#x3D;’123456’,username&#x3D;’moon’ where id&#x3D;1;</p>
+<p>update users set password&#x3D;456789;</p>
+<p>查</p>
+<p>select * from 表名 （查询表中所有数据）</p>
+<p>select 字段名1，字段名2 from 表名 [where条件表达式]   （查询指定的字段）</p>
+<p>select username,password from users;</p>
+<p>select username,password from users where id&#x3D;1;</p>
+<p>where条件表达式：id&#x3D;1|id&gt;2|id&lt;9|username&#x3D;admin|password&#x3D;123456</p>
+<p>in查询</p>
+<p>select * from users where id in (3,5,7);</p>
+<p>带between and 关键字的查询</p>
+<p>select * from users where id between 1 and 10;（输出id在1到10之间所有字段的数据）</p>
+<p>select * from users where id not between 1 and 10;（输出id在1到10之外所有字段的数据）</p>
+<p>若只需要查询个别字段的数据把*更改成要查询的字段名即可</p>
+<p>带distinct关键字的查询</p>
+<p>select distinct username from users;（查询users数据库中的字段username中所有<strong>不重复</strong>的数据）</p>
+<h4 id="like查询"><a href="#like查询" class="headerlink" title="like查询"></a>like查询</h4><p>select * from users where username like “%m%”;（将users数据库中所有username字段里<strong>带m的</strong>所有字段的数据输出）</p>
+<p>select * from users where username like “m%”;（将users数据库中所有username字段里<strong>以m开头的</strong>所有字段的数据输出）</p>
+<p>select * from users where username like “%m”;（将users数据库中所有username字段里<strong>以m结尾</strong>的所有字段的数据输出）</p>
+<p>下划线_匹配一个字符</p>
+<p>select * from users where username like “moo_”;（将users数据库中username字段里所有共四个字符且前三个为moo的所有字段的数据输出）</p>
+<p>and查询（需满足所有条件，缺一不可）</p>
+<p>select * from users where password&#x3D;”123456” and username&#x3D;’admin’;</p>
+<p>or查询 （只需要满足任意一个条件）</p>
+<p>select * from users where password&#x3D;”123456” or username&#x3D;’admin’;</p>
+<p>当or与and一起使用时，and的优先级高于or，会优先运算and两边的表达式，再运算or两边的表达式</p>
+<p>聚合查询</p>
+<p>count()返回某列的行数</p>
+<p>select count(*) from users;</p>
+<p>sum() 返回某列值的和</p>
+<p>avg() 返回某列的平均值</p>
+<p>max() 返回某列的最大值</p>
+<p>min() 返回某列的最小值</p>
+<p>使用limit限制查询结果的数量</p>
+<p>select * from users limit m,n;（从第m行开始，不包括第m行，往下输出n行）</p>
+<p>select * from users limit 3,2;（输出第4行和第5行）</p>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>where型的子查询（把内层查询结果当作外层查询的比较条件）</p>
+<p>select * from users where id in (select id from users where username&#x3D;”admin”);</p>
+<p>from型子查询（将内部查询的结果作为一个表供外部查询）</p>
+<p>select * from (select id,username,password from users) where id&gt;2;</p>
+<p>select * from (select * from users where id&gt;10) as age_10;（内部查询出来的是一个集合，别名为age_10）</p>
+<p>exists型子查询 （将内部查询的结果与外部查询的结果比较，输出公有的）</p>
+<p>select * from users exists (select * from users where id&gt;1);</p>
+<p>联合查询（两个表的查询）</p>
+<p>若需要使用*，两个表的字段需一样多</p>
+<p>select * from users union select * from news;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" data-id="cuida3rzcpC4ACCvs0_0zSmez" data-title="数据库1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-php3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/29/php3/" class="article-date">
+  <time class="dt-published" datetime="2025-12-29T07:24:37.000Z" itemprop="datePublished">2025-12-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/12/29/php3/">php3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>在类中，变量称为属性（分为public和private两种，前者可在类的内部，子类，类的外部任意访问和修改，后者只能在定义它的类的内部访问和修改，子类和外部都无法直接修改），函数称为方法，$this关键引用当前对象，并且只在方法内部可用</p>
+<p>语法格式：</p>
+<p>&lt;?php</p>
+<p>class phpclass{</p>
+<p> var $var1;</p>
+<p> var $var2&#x3D;”constant string”;</p>
+<p>  function myfunc($arg1,$arg2){</p>
+<p>[…..]</p>
+<p>}</p>
+<p>[….]</p>
+<p>}?&gt;</p>
+<p>类使用class关键字加上类名定义</p>
+<p>类名后的一对大括号内可定义变量和方法</p>
+<p>类的变量使用var来声明，变量也可以初始化值</p>
+<p>函数定义类似php函数的定义，但函数只能通过该类及其实例化的对象访问</p>
+<p>使用new关键字来调用类</p>
+<p>$p1&#x3D;new phpclass()</p>
+<p>使用-&gt;来访问类中的成员函数或变量</p>
+<p>$p1-&gt;myfunc()</p>
+<h1 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h1><p>php中把以两个下划线开头的方法称为魔术方法</p>
+<h4 id="一、-construct-，类的构造函数"><a href="#一、-construct-，类的构造函数" class="headerlink" title="一、__construct()，类的构造函数"></a>一、__construct()，类的构造函数</h4><p>php中构造方法是对象创建完成后第一个被对象调用的方法。每个类中都有一个构造方法，如果没有显示的声明它，那么类中都会默认存在一个没有参数且内容为空的构造方法</p>
+<p>__construct()：在对象被创建时自动执行的构造方法</p>
+<p>构造方法通常用于执行一些有用的初始化任务，如对成员属性在创建对象时赋予初值</p>
+<p>一个类中只能声明一个构造方法</p>
+<p>构造方法在类中的声明格式：</p>
+<p>function __construct([参数列表])</p>
+<h4 id="二、-destruct-，类的析构函数"><a href="#二、-destruct-，类的析构函数" class="headerlink" title="二、__destruct()，类的析构函数"></a>二、__destruct()，类的析构函数</h4><p>析构方法允许在销毁一个类之前执行一些操作或完成一些功能，如关闭文件</p>
+<p>析构函数不能带有任何参数</p>
+<h4 id="三，-call-，在对象调用一个不可访问方法时调用"><a href="#三，-call-，在对象调用一个不可访问方法时调用" class="headerlink" title="三，__call()，在对象调用一个不可访问方法时调用"></a>三，__call()，在对象调用一个不可访问方法时调用</h4><p>该方法有两个参数，第一个是$function_name 会自动接受不存在的方法名，第二个是$arguments以数组方式接受不存在方法的多个参数</p>
+<p>该方法在调用的方法不存在时会自动调用，程序仍会继续执行</p>
+<h4 id="四，-callStatic-，用静态方式中调用一个不可访问方法时调用"><a href="#四，-callStatic-，用静态方式中调用一个不可访问方法时调用" class="headerlink" title="四，__callStatic()，用静态方式中调用一个不可访问方法时调用"></a>四，__callStatic()，用静态方式中调用一个不可访问方法时调用</h4><p>与__call()大致相同</p>
+<h4 id="五，-get，获得一个类的成员变量时调用"><a href="#五，-get，获得一个类的成员变量时调用" class="headerlink" title="五，__get，获得一个类的成员变量时调用"></a>五，__get，获得一个类的成员变量时调用</h4><h4 id="六，-set，设置一个类的成员变量时调用"><a href="#六，-set，设置一个类的成员变量时调用" class="headerlink" title="六，__set，设置一个类的成员变量时调用"></a>六，__set，设置一个类的成员变量时调用</h4><h4 id="七，-isset-当对不可访问属性调用isset-或empty-时调用"><a href="#七，-isset-当对不可访问属性调用isset-或empty-时调用" class="headerlink" title="七，__isset(),当对不可访问属性调用isset()或empty()时调用"></a>七，__isset(),当对不可访问属性调用isset()或empty()时调用</h4><h4 id="八，-unset-当对不可访问属性调用unset-时调用"><a href="#八，-unset-当对不可访问属性调用unset-时调用" class="headerlink" title="八，__unset(),当对不可访问属性调用unset()时调用"></a>八，__unset(),当对不可访问属性调用unset()时调用</h4><h1 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h1><p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的属性和方法</p>
+<p>PHP中使用关键字extends来继承一个类（class Child extend Parent ）</p>
+<p>父类也称为基类 </p>
+<p>一个父类可以拥有多个子类，一个子类只能拥有一个父类</p>
+<h4 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h4><p>如果从父类继承的方法不能满足子类的需求，可以对其进行改写</p>
+<h4 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h4><p>PHP对属性或方法的访问控制，是通过在前面添加关键字public（公有）、protected（受保护）、private（私有）来实现的</p>
+<p>如果用var定义则被视为为public</p>
+<p>public：公有的类成员可以在任何地方被访问</p>
+<p>protected：受保护的类成员则只能被其自身以及子类和父类访问访问</p>
+<p>private：私有的类成员只能被其自身访问</p>
+<p>在类中函数可以访问公有、受保护、私有的属性</p>
+<p>类的私有和受保护的属性虽然不能在类外直接访问，但类中的公有方法可以访问私有和受保护的属性，因此可以通过在类外调用这个公共方法来间接获取到私有属性的内容</p>
+<p>在子类中可以通过关键字parent（parent：：+方法）来访问父类的方法，也可以使用$this关键字</p>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>使用接口（interface），可以指定某个类必须实现哪些方法p，但不需要定义这些方法的具体内容</p>
+<p>接口是通过interface关键字来定义的，就像定义一个标准的类一样，但其中定义所有的方法都是空的</p>
+<p>例如</p>
+<p>interface Person{</p>
+<p>const NAME&#x3D;“这个是常量”</p>
+<p>public function get_name();</p>
+<p>public function set_name($name);</p>
+<p>}</p>
+<p>接口中所有方法都是公有的，方法可以允许有参数</p>
+<p>接口中可以使用常数，但是不能使用变量</p>
+<p>要实现一个接口，需使用implements操作符，类中必须实现接口中定义的所有方法，否则会报错，类可以实现多个接口，用逗号来分隔多个接口的名称</p>
+<p>例如</p>
+<p>class p1 implements Person{</p>
+<p>public function set_name($name)</p>
+<p>{……}</p>
+<p>public function get_name()</p>
+<p>{……}</p>
+<p>}</p>
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>任何一个类，如果类中至少有一个方法被声明为抽象的，那么这个类就必须被声明为抽象的</p>
+<p>被声明为抽象的方法不能有具体的内容，必须为空，可以有参数</p>
+<p>定义为抽象的类不能被实例化</p>
+<p>使用abstract关键字定义抽象类和方法</p>
+<p>继承一个抽象类的时候，子类必须定义父类所有的抽象方法。另外这些方法的访问控制必须和父类中的一样（或者更加宽松）例如某个抽象方法在父类被声明为受保护的，那么在子类中就应该声明为受保护的或者公有的，而不能被声明为私有的</p>
+<h1 id="Static关键字"><a href="#Static关键字" class="headerlink" title="Static关键字"></a>Static关键字</h1><p>声明类属性或方法为static时，就可以不实例化而直接访问</p>
+<p>echo Person(类名)::$name(属性名)；</p>
+<p>echo Person(类名)::getname(方法名)；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/29/php3/" data-id="cuidk7Mi5lgeSzjE2pNu2Un_S" data-title="php3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-php2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/23/php2/" class="article-date">
+  <time class="dt-published" datetime="2025-12-23T13:13:34.000Z" itemprop="datePublished">2025-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/12/23/php2/">php2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="php函数"><a href="#php函数" class="headerlink" title="php函数"></a>php函数</h1><p>函数在程序中可以重复使用</p>
+<p>页面加载时函数不会立即执行</p>
+<p>函数只有在被调用时才会执行</p>
+<p>自定义函数时要以function开头</p>
+<p>函数名只能以字母或下划线开头</p>
+<p>函数名对大小写不敏感</p>
+<h4 id="无参数的函数"><a href="#无参数的函数" class="headerlink" title="无参数的函数"></a>无参数的函数</h4><p>function getname(){</p>
+<p>return ‘asdf’;</p>
+<p>}</p>
+<p>echo getname();</p>
+<h4 id="有参数的函数"><a href="#有参数的函数" class="headerlink" title="有参数的函数"></a>有参数的函数</h4><p>function getname（$name）{</p>
+<p>return $name;</p>
+<p>}</p>
+<p>echo getname(name:‘asdf’);</p>
+<h4 id="形参有默认值的有参数的函数"><a href="#形参有默认值的有参数的函数" class="headerlink" title="形参有默认值的有参数的函数"></a>形参有<u>默认值</u>的有参数的函数</h4><p>   function getname（$name&#x3D;‘asdf’）{</p>
+<p>return $name;</p>
+<p>}</p>
+<p>echo getname(name:’demo‘);\（输出为demo）</p>
+<p>echo getname();\（输出为asdf）</p>
+<h4 id="没有参数的匿名函数"><a href="#没有参数的匿名函数" class="headerlink" title="没有参数的匿名函数"></a>没有参数的匿名函数</h4><p>$callfunction&#x3D;function(){</p>
+<p>return ‘asdf’；</p>
+<p>}；</p>
+<p>echo $callfunction();</p>
+<h4 id="有参数的匿名函数"><a href="#有参数的匿名函数" class="headerlink" title="有参数的匿名函数"></a>有参数的匿名函数</h4><p>$callfunction&#x3D;function($name){</p>
+<p>return $name；</p>
+<p>}；</p>
+<p>echo $callfunction(name:’asdf’); </p>
+<h1 id="isset-函数"><a href="#isset-函数" class="headerlink" title="isset()函数"></a>isset()函数</h1><p>作用：判断一个变量是否已定义且不为“NULL“</p>
+<p>即同时满足变量存在并且值不为null则返回ture，否则返回false</p>
+<h1 id="intvla函数"><a href="#intvla函数" class="headerlink" title="intvla函数"></a>intvla函数</h1><p>intval(mixed $var, int $base &#x3D; 10): in</p>
+<p>作用：$var为要转换的值，$base为转换的进制（默认为十进制）</p>
+<p>若$var为字符串，他会从字符串的开始部分解析数字，直到遇到非数字字符为止（例如：”123abc“转化为123）</p>
+<p>若为浮点数，则会截断小数部分，返回整数部分（例如3.14转化为3）</p>
+<p>如果字符串以非数字字符开头，则返回0</p>
+<p>空字符串会被转化为0</p>
+<p>ture转化为1，flase转化为0</p>
+<p>如果传入一个数组，也会返回0（数组不是数字）</p>
+<p>null会转化为0</p>
+<h1 id="strlen函数"><a href="#strlen函数" class="headerlink" title="strlen函数"></a>strlen函数</h1><p>作用：返回字符串长度（包括空格与标点符号）</p>
+<p>strlen（）函数的返回值为字符串的<u>字节数</u> </p>
+<p>对于单字节编码（如ASCLL），每个字字符通常对应一个字节</p>
+<p>对于多字节编码（例如UTF-8），一些字符可能会占用多个字节</p>
+<p>若传入空字符串则返回0</p>
+<p>若传入一个非字符串，则会将其转化为字符串</p>
+<h1 id="substr函数"><a href="#substr函数" class="headerlink" title="substr函数"></a>substr函数</h1><p>作用：从一个给定的字符串中提取字符串，需指定提取的位置和长度</p>
+<p>substr(string $string, int $start, int $length &#x3D; ?): string</p>
+<p>$string为要截取的原始字符串</p>
+<p>$start为开始截取的位置，可以是整数（从字符串开头计数），可以是负数（从字符串末尾计数）</p>
+<p>$length为要截取的长度，默认会截取从$start位置到字符串结尾的部分，如果是负数，则表示截取的长度是从末尾向前算</p>
+<h1 id="is-array-函数"><a href="#is-array-函数" class="headerlink" title="is_array()函数"></a>is_array()函数</h1><p>判断是否为数组，是则返回 1</p>
+<h1 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h1><p>判断是否为数字，是则返回1</p>
+<h1 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h1><p>判断数组中含有几个元素</p>
+<h1 id="运算条件符"><a href="#运算条件符" class="headerlink" title="运算条件符"></a>运算条件符</h1><p>条件？真时执行的语句：假时执行的语句；</p>
+<h1 id="array-search函数"><a href="#array-search函数" class="headerlink" title="array_search函数"></a>array_search函数</h1><p>在PHP中查找特定的值，会返回找到的值的下标，若没找到则返回false</p>
+<p>mixed array_search(mixed $needle, array $haystack, bool $strict &#x3D; false);</p>
+<p>$needle为要查找的元素，可以为任意类型</p>
+<p>$haystack为在其中查找的数组</p>
+<p>$strict默认为false即进行若比较（&#x3D;&#x3D;），若为ture则进行强比较（&#x3D;&#x3D;&#x3D;）</p>
+<h1 id="foreach函数"><a href="#foreach函数" class="headerlink" title="foreach函数"></a>foreach函数</h1><p>遍历数组</p>
+<p>foreach ($array as $key &#x3D;&gt; $value) {<br>    &#x2F;&#x2F; 对每个元素的操作<br>}</p>
+<p>$array为需要遍历的数组</p>
+<p>$key为当前元素的键</p>
+<p>$value为当前元素的值</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/23/php2/" data-id="cuidmCjX6fRhdnWj3Ioa4VOx-" data-title="php2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-php1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/16/php1/" class="article-date">
+  <time class="dt-published" datetime="2025-12-16T13:03:11.000Z" itemprop="datePublished">2025-12-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/12/16/php1/">php1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="php简述"><a href="#php简述" class="headerlink" title="php简述"></a>php简述</h1><p>php为一种通用开源脚本语言</p>
+<p>php文件可以包含文本，html，javascript代码和php代码</p>
+<p>php代码在服务器上执行，结果以纯html形式返回给浏览器 </p>
+<h3 id="php的作用"><a href="#php的作用" class="headerlink" title="php的作用"></a>php的作用</h3><p>1  可以生成动态页面内容</p>
+<p>2  可以创建，打开，读取，写入，关闭服务器上的文件</p>
+<p>3  可以收集表单数据</p>
+<p>4  可以发送和接收cookies</p>
+<p>5  可以添加，删除，修改数据库中的数据</p>
+<p>6  可以限制用户访问网站上的一些内容</p>
+<p>7  可以加密数据 </p>
+<h1 id="php的基本语法"><a href="#php的基本语法" class="headerlink" title="php的基本语法"></a>php的基本语法</h1><p>php脚本以&lt;?php开始，以？&gt;结束</p>
+<p>&#x2F;&#x2F;为单行注释</p>
+<p>&#x2F;*     为多行注释     *&#x2F;</p>
+<p>变量以$符号开始，后面跟着变量名</p>
+<p>变量名只能以字母或者下划线字符开始</p>
+<p>变量名不能包含空格</p>
+<p>当一个函数完成时，他的所有变量通常都会被删除，可用<u><em>static</em> </u> 关键字使变量不被删除（例如;   static $  name&#x3D;）</p>
+<p>function text()    function的作用是声明变量，text为变量名</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>php中共有5种数据类型：String（字符串），Integer（整形），Float（浮点型），Boolean（布尔型），Arrary（数组），Object（对象），NULL（空值）</p>
+<p>输出数据时通常使用echo</p>
+<p>字符串   $a&#x3D;”这是 字符型”</p>
+<p>可用‘ 也可用“，使用‘时输出的为纯文本无法对解释变量（如果里面有变量都作为一个字符串处理），使用”时则可以解释变量（如果里面有变量 会输出变量的值）</p>
+<p>浮点型  $a&#x3D;12.34;</p>
+<p>布尔型  $a1&#x3D;ture;   $a2&#x3D;false;</p>
+<p>数组  $a&#x3D;array(‘1’,2,’xxx’)  </p>
+<p>字典型数组  $a&#x3D;array(‘x’&#x3D;&gt;1,’b’&#x3D;&gt;2);</p>
+<p>输出数组型数据是要用print_r($a )</p>
+<p>若要使用echo则需加上数组下标，例如：echo $a[0]</p>
+<p>对象 </p>
+<p>class obj{</p>
+<p>   var $name;</p>
+<p>   function getname(){</p>
+<p>   }</p>
+<p>}</p>
+<p>$o  &#x3D;&#x3D;new obj();</p>
+<p>空值   $n&#x3D;null;</p>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>定义：常量是一个简单值的标识符，该值不能在脚本中改变。（在整个脚本中都能使用） </p>
+<p>定义常量时不用$而是用define   define(‘NAME’,’abcde’,ture); </p>
+<p>其中NAME为常量的名称，abcde为常量的值，ture表示不区分大小写，flase表示区分大小写，默认为flase</p>
+<h1 id="预定义函数"><a href="#预定义函数" class="headerlink" title="预定义函数"></a>预定义函数</h1><p>定义：无需使用define（）函数定义就可以直接使用的常量</p>
+<h1 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h1><p> $a&#x3D;1234;</p>
+<p>使用echo输出时默认为十进制</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>在php中array()函数用于创建数组</p>
+<p>通过使用print_r（）可输出数组</p>
+<p>count函数用于求数组的长度</p>
+<p>在php中，有三种类型的数组：</p>
+<p><u>数值数组</u> :带有数字ID的数组  $a&#x3D;array(‘1’,2,’xxx’)</p>
+<p>若要使用echo则需加上下标，例如：echo $a[0]</p>
+<p><u>关联数组</u> :带有指定键的数组，每个键关联一个值  $a&#x3D;array(‘a1’&#x3D;&gt;’php’,’a2’&#x3D;&gt;’java’,’a3’&#x3D;&gt;’python’) </p>
+<p>其中 a1,a2,a3为键，php,java,python为值</p>
+<p>使用echo $a[‘a1’]可输出对应的值</p>
+<p><u>多维数组</u> ：包含一个或多个数组的数组</p>
+<h1 id="php函数"><a href="#php函数" class="headerlink" title="php函数"></a>php函数</h1><p>函数在程序中可以重复使用</p>
+<p>页面加载时函数不会立即执行</p>
+<p>函数只有在被调用时才会执行</p>
+<p>自定义函数时要以function开头</p>
+<p>函数名只能以字母或下划线开头</p>
+<p>函数名对大小写不敏感</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/16/php1/" data-id="cuid-63h5gvQ-WR2Xk3tM8Dx-" data-title="php1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-html" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/12/html/" class="article-date">
+  <time class="dt-published" datetime="2025-12-12T00:38:56.000Z" itemprop="datePublished">2025-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/12/12/html/">html</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="form表单"><a href="#form表单" class="headerlink" title="form表单"></a>form表单</h1><p>作用：规定当提交表单时向何处发送表单数据</p>
+<p>提交方法有ges与post</p>
+<p>input  标签</p>
+<p>name  表示该文本输入框名称</p>
+<p>maxlength  输入框中允许输入字符的最大数</p>
+<p>value  输入框中的默认值</p>
+<p>readonly  表示古该框中只能显示，不能修改</p>
+<p>label   </p>
+<p>enctype  规定在表单数据发送之前如何对其编码</p>
+<p>三种编码方式：1 application&#x2F;x-www-form-urlencoded  2 multipart&#x2F;form-data  3 text&#x2F;plain</p>
+<h2 id="input类型（type）"><a href="#input类型（type）" class="headerlink" title="input类型（type）"></a>input类型（type）</h2><p>type&#x3D;password 密码框输入</p>
+<p>type&#x3D;file 文件上传(使用此类型时编码方式必须为application&#x2F;x-www-form-urlencoded)</p>
+<p>type&#x3D;checkbox  复选框</p>
+<p>type&#x3D;radio  单选框</p>
+<p>type&#x3D;hidden 隐藏域</p>
+<p>type&#x3D;button 按钮</p>
+<p> type&#x3D;submmit  提交到服务器</p>
+<p>type&#x3D;reset 重置</p>
+<h1 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h1><p>作用：控制页面与页面之间的跳转</p>
+<p>例如&lt;a href&#x3D;“<a href="http://www.baidu.com”target=_self/%3E%E7%99%BE%E5%BA%A6">http://www.baidu.com”target=_self\&gt;百度</a></a></p>
+<p>在页面中点击百度标签即可跳转到相应网页</p>
+<p>target类型</p>
+<p>_self  默认。在当前页面打开链接</p>
+<p>_blank  新建一个窗口并在该窗口中打开链接</p>
+<p>_parent  在父框架集中打开链接</p>
+<p>_top   在整个窗口中打开来链接</p>
+<h1 id="锚文本"><a href="#锚文本" class="headerlink" title="锚文本"></a>锚文本</h1><p>作用：回到标记的位置</p>
+<p>例如  在想回到的位置中添加name&#x3D;“XXX” </p>
+<p>&lt;a href&#x3D;“#top”&gt;返回</a></p>
+<p>在页面点击返回标签即可回到标记的位置</p>
+<h1 id="table标签"><a href="#table标签" class="headerlink" title="table标签"></a>table标签</h1><p>&lt;captiopn&gt;我的标题&lt;captiopn&gt;  表格带标题</p>
+<p>border 边框</p>
+<p>width  宽度</p>
+<p>height  高度</p>
+<p>colspan</p>
+<p>rowspan</p>
+<p>&lt;th&gt;&lt;&#x2F;th&gt;</p>
+<p>&lt;td&gt;表格&lt;td&gt;</p>
+<p>cellpadding  </p>
+<p>cellspacing</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/12/html/" data-id="cuidI-LUND89Ug0aPv28FuTJ3" data-title="html" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-第四周的笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2025-12-07T13:07:17.000Z" itemprop="datePublished">2025-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/">第四周的笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="intval函数"><a href="#intval函数" class="headerlink" title="intval函数"></a>intval函数</h1><p>作用：得到变量的证书取值</p>
+<p>用法：intval(mixed $value,int $base&#x3D;10):int</p>
+<p>其中$value为要转换的整形变量（必填），ture固定转化为1，false固定转化为0</p>
+<p>$base为10表示将变量转化为10进制</p>
+<p>若$base&#x3D;0则需观察变量，若字符串包含0x前缀则转化为16进制，若包含0b前缀则转化为2进制，若包含0前缀则转化为8进制，若都不包含默认为10进制</p>
+<p>作用：得到变量的证书取值</p>
+<p>用法：intval(mixed $value,int $base&#x3D;10):int</p>
+<p>其中$value为要转换的整形变量（必填），ture固定转化为1，false固定转化为0</p>
+<p>$base为10表示将变量转化为10进制</p>
+<p>若$base&#x3D;0则需观察变量，若字符串包含0x前缀则转化为16进制，若包含0b前缀则转化为2进制，若包含0前缀则转化为8进制，若都不包含默认为10进制</p>
+<h1 id="md5加密绕过"><a href="#md5加密绕过" class="headerlink" title="md5加密绕过"></a>md5加密绕过</h1><h3 id="弱比较绕过"><a href="#弱比较绕过" class="headerlink" title="弱比较绕过"></a>弱比较绕过</h3><p>例：&lt;?php $a &#x3D; $GET[‘a’];</p>
+<p>$b &#x3D;$_GET[‘b’]; </p>
+<p>if($a !&#x3D;$b &amp;&amp; md5($a) &#x3D;&#x3D; md5($b))</p>
+<p>echo ‘success!’;</p>
+<h2 id="方法1：0e绕过"><a href="#方法1：0e绕过" class="headerlink" title="方法1：0e绕过"></a>方法1：0e绕过</h2><p>原理：PHP在处理字符串时会出现缺陷，如果字符串为’5e2’，本来只是一个正常字符串，但PHP会认为这是科学计数法里的e，那么PHP进行比较时会将这个字符串按照科学计数法计算，即5e2&#x3D;5*10^2&#x3D;500，由此0e100被认为和0相等。md5加密后的哈希值是一串16进制数，因此需要哈希值第一位为0，第二位为e即可，后面不论是什么都认为和0相等</p>
+<p>以下字符串经过md5函数后以’0e’开头： QNKCDZO</p>
+<p>240610708</p>
+<p>s878926199a</p>
+<p>s155964671a</p>
+<p>s1091221200a</p>
+<p>s1665632922a</p>
+<p>经过md5函数加密一次和两次后均以’0e’开头：</p>
+<p>7r4lGXCH2Ksu2JNT3BYM</p>
+<p>CbDLytmyGm2xQyaLNhWn</p>
+<p>770hQgrBOjrcqftrlaZk</p>
+<p>有时候题目还会用ctype_alnum()、is_numeric()或正则表达式来限制原值是纯字母或纯数字</p>
+<h2 id="方法二：数组绕过"><a href="#方法二：数组绕过" class="headerlink" title="方法二：数组绕过"></a>方法二：数组绕过</h2><p>原理：无论是PHP弱比较还是强比较，md5()函数无法处理数组，如果传入的是数组，会返回NULL，两个数组经过加密后返回值均为NULL，形成相等</p>
+<p>在url后添加?a[]&#x3D;1&amp;b[]&#x3D;2;即可</p>
+<h1 id="强比较绕过"><a href="#强比较绕过" class="headerlink" title="强比较绕过"></a>强比较绕过</h1><h2 id="方法一：数组绕过（同上）"><a href="#方法一：数组绕过（同上）" class="headerlink" title="方法一：数组绕过（同上）"></a>方法一：数组绕过（同上）</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" data-id="cuidq3uTCmZr0-b6Sn3lOuPf9" data-title="第四周的笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-文件上传漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time class="dt-published" datetime="2025-11-22T09:34:32.000Z" itemprop="datePublished">2025-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="如何预防（文件上传校验方式）"><a href="#如何预防（文件上传校验方式）" class="headerlink" title="如何预防（文件上传校验方式）"></a>如何预防（文件上传校验方式）</h1><h2 id="前端校验"><a href="#前端校验" class="headerlink" title="前端校验"></a>前端校验</h2><p>在浏览器校验与后端无关，无法用bp抓包（只在浏览器校验，不会发送请求）</p>
+<h2 id="WAF校验"><a href="#WAF校验" class="headerlink" title="WAF校验"></a>WAF校验</h2><p>防火墙</p>
+<h2 id="后端校验"><a href="#后端校验" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>1  检查后缀：白名单和黑名单</p>
+<p>2  检查内容：文件头，大小等</p>
+<p>3  其他</p>
+<h1 id="如何绕过"><a href="#如何绕过" class="headerlink" title="如何绕过"></a>如何绕过</h1><p>判断校验方式（属于前端校验还是后端校验）</p>
+<p>看浏览器是否有给服务器发请求</p>
+<p>上传文件后若发现左上角刷新按钮（圈圈）在转，说明向后端发送了请求，即为后端校验，反之为前端校验</p>
+<h2 id="前端校验-1"><a href="#前端校验-1" class="headerlink" title="前端校验"></a>前端校验</h2><p>所有的前端校验等于没有</p>
+<p><u><em>绕过方式</em> </u> </p>
+<p>1  可以右键网页点击检查（F12），点击设置，找到调试程序，勾选停用JavaScript，即可上传其他后缀名的文件</p>
+<p>原理：前端校验使用的编程语言为JavaScript，停用JavaScript后校验失效</p>
+<p>2  F12找到校验函数删除即可，例：onsubmit&#x3D;“return checkFile（）”，删除“return checkFile（）”即可（在谷歌与edge浏览器中一般不适用，火狐可用）</p>
+<h2 id="后端校验-1"><a href="#后端校验-1" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="MIME类型检测"><a href="#MIME类型检测" class="headerlink" title="MIME类型检测"></a>MIME类型检测</h2><p>MIME是描述消息内容类型的因特网标准，用来表示文档，文件或字节流的性质和格式。在HTTP数据包中在Content-Type字段显示</p>
+<p>常见的MIME类型（通用型）：</p>
+<p>1  超文本标记语言.html文件：text&#x2F;html</p>
+<p>2  xml文档.xml：text&#x2F;xml</p>
+<p>3  普通文本.txt：text&#x2F;plain</p>
+<p>4  PDF文档.pdf：application&#x2F;pdf</p>
+<p>5  PNG 图像.png：image&#x2F;png</p>
+<p>6  GIF图形.gif：image&#x2F;gif</p>
+<p>7  JPEG图形.jpeg.jpg：image&#x2F;jpeg</p>
+<p>绕过方式：</p>
+<p>1（后端过滤，在服务端对数据包的MIME进行检查）   用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到第二个Content-Type字段，将其内容改为image&#x2F;png，例如  Content-Type：application&#x2F;octet-stream改为Content-Type：image&#x2F;png</p>
+<p>2 （后端文件名过滤，禁止上传.asp|.aspx|.php|.jsp后缀文件） 用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到Content-Dispositoin，在文件明后添加：：$DATA  </p>
+<p>若源代码中存在函数检验：：$DATA若发现则替换其为空字符，则可以进行双写</p>
+<p>访问url时要将url中的$DATA删除才可正常访问</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="cuidpqutQhErUGdW5wbv5u8lv" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-post11-15-sql注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" class="article-date">
+  <time class="dt-published" datetime="2025-11-15T05:45:07.000Z" itemprop="datePublished">2025-11-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/">post11.15(sql注入)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#一 SQL介绍</p>
+<p><em>1</em>  SQL全称是结构化查询语言，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及 查询、更新和管理关系数据库系统，同时也是数据库脚本文件的扩展名。</p>
+<p><em>2</em>  SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
+<p>#二 工具:Sqlmap</p>
+<p> <em>1</em> Sqlmap全面支持六种SQL注入技术：</p>
+<p>（1）  基于布尔类型的盲注：即可以根据返回页面判断条件真假的注入。</p>
+<p>（2）  基于时间的盲注：即不能根据页面返回的内容判断任何信息，要用条件语句查看时间延迟语句是否已执行(即页面返回时间是否增加)来判断。</p>
+<p>（3）  基于报错注入：即页面会返回错误信息，或者把注入的语句的结果直接返回到页面中。</p>
+<p>（4）  联合查询注入：在可以使用Union的情况下的注入。</p>
+<p>（5） 堆查询注入：可以同时执行多条语句时的注入。</p>
+<p>（6）  带外注入：构造SQL语句，这些语句在呈现给数据库时会触发数据库系统创建与攻击者控制的外部服务器的连接。以这种方式，攻击者可以收集数据或可能控制数据库的行为。</p>
+<p><em>2</em>   使用 Sqlmap 对一个注入点进行测试时，可以使用 <code>-v x</code> 参数指定回显信息的复杂度，x范围为[0~6]，共有 7 个等级，默认为 1。</p>
+<ul>
+<li>0：只显示python错误以及严重的信息。</li>
+<li>1：同时显示基本信息和警告信息。（默认）</li>
+<li>2：同时显示debug信息。</li>
+<li>3：同时显示注入的payload。</li>
+<li>4：同时显示HTTP请求。</li>
+<li>5：同时显示HTTP响应头。</li>
+<li>6：同时显示HTTP响应页面。</li>
+<li>如果想看到 Sqlmap 发送的测试 payload 最好的等级就是3，例：sqlmap.py -v 3 -u “<a target="_blank" rel="noopener" href="http://www.xxx.com/a.php?id=x">http://www.xxx.com/a.php?id=x</a>“</li>
+</ul>
+<p>#三 sqlmap的使用</p>
+<p><em>1</em>  判断是否存在sql注入：</p>
+<p>假设目标注入点是 <code>http://127.0.0.1/sqli-labs/Less-1/?id=1</code>，判断其是否存在注入的命令如下：</p>
+<p>sqlmap.py -u <a target="_blank" rel="noopener" href="http://127.0.0.1/sqli-labs/Less-1/?id=1">http://127.0.0.1/sqli-labs/Less-1/?id=1</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" data-id="cuidiyncW-lIOJIEELvSaXSVB" data-title="post11.15(sql注入)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-11-10-11-16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/13/11-10-11-16/" class="article-date">
+  <time class="dt-published" datetime="2025-11-13T04:57:06.000Z" itemprop="datePublished">2025-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/11/13/11-10-11-16/">11.10-11.16</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#笔记</p>
+<p>##11.12</p>
+<p>1 可在url后添加&#x2F;index.php.bak访问备份文件</p>
+<p>2 可在url后添加&#x2F;robots.txt以访问禁止访问的敏感路径(这些路径中往往包含一写敏感内容)</p>
+<p>3  phps文件就是php的源代码文件，通常用于提供给用户（访问者）查看php代码，因为用户无法直接通过Web浏览器看到php文件的内容，所以需要用phps文件代替</p>
+<p>4 disabled 属性规定应该禁用的 input元素。被禁用的 input 元素是无法使用和无法点击的。</p>
+<p>5  php中有两种比较符号 &#x3D;&#x3D;&#x3D; 会同时比较字符串的值和类型 &#x3D;&#x3D; 会先将字符串换成相同类型，再作比较，属于弱类型比较</p>
+<p>6 php中的弱类型比较会使’abc’ &#x3D;&#x3D; 0为真（abc可换成任意字符）。</p>
+<p>7  php中is_numeric() 函数会判断如果是数字和数字字符串则返回 TRUE，否则返回 FALSE,且php中弱类型比较时，会使(‘1234a’ &#x3D;&#x3D; 1234)为真</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/13/11-10-11-16/" data-id="cuidrLrywgn87rH7FaD5ajcQk" data-title="11.10-11.16" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/">sql注入1</a>
+          </li>
+        
+          <li>
+            <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/29/php3/">php3</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/23/php2/">php2</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/16/php1/">php1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

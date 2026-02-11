@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>php3 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="类在类中，变量称为属性（分为public和private两种，前者可在类的内部，子类，类的外部任意访问和修改，后者只能在定义它的类的内部访问和修改，子类和外部都无法直接修改），函数称为方法，$this关键引用当前对象，并且只在方法内部可用 语法格式： &lt;?php class phpclass{  var $var1;  var $var2&#x3D;”constant string”;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php3">
+<meta property="og:url" content="http://example.com/2025/12/29/php3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="类在类中，变量称为属性（分为public和private两种，前者可在类的内部，子类，类的外部任意访问和修改，后者只能在定义它的类的内部访问和修改，子类和外部都无法直接修改），函数称为方法，$this关键引用当前对象，并且只在方法内部可用 语法格式： &lt;?php class phpclass{  var $var1;  var $var2&#x3D;”constant string”;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-12-29T07:24:37.000Z">
+<meta property="article:modified_time" content="2026-02-02T07:42:21.076Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-php3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/29/php3/" class="article-date">
+  <time class="dt-published" datetime="2025-12-29T07:24:37.000Z" itemprop="datePublished">2025-12-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      php3
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>在类中，变量称为属性（分为public和private两种，前者可在类的内部，子类，类的外部任意访问和修改，后者只能在定义它的类的内部访问和修改，子类和外部都无法直接修改），函数称为方法，$this关键引用当前对象，并且只在方法内部可用</p>
+<p>语法格式：</p>
+<p>&lt;?php</p>
+<p>class phpclass{</p>
+<p> var $var1;</p>
+<p> var $var2&#x3D;”constant string”;</p>
+<p>  function myfunc($arg1,$arg2){</p>
+<p>[…..]</p>
+<p>}</p>
+<p>[….]</p>
+<p>}?&gt;</p>
+<p>类使用class关键字加上类名定义</p>
+<p>类名后的一对大括号内可定义变量和方法</p>
+<p>类的变量使用var来声明，变量也可以初始化值</p>
+<p>函数定义类似php函数的定义，但函数只能通过该类及其实例化的对象访问</p>
+<p>使用new关键字来调用类</p>
+<p>$p1&#x3D;new phpclass()</p>
+<p>使用-&gt;来访问类中的成员函数或变量</p>
+<p>$p1-&gt;myfunc()</p>
+<h1 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h1><p>php中把以两个下划线开头的方法称为魔术方法</p>
+<h4 id="一、-construct-，类的构造函数"><a href="#一、-construct-，类的构造函数" class="headerlink" title="一、__construct()，类的构造函数"></a>一、__construct()，类的构造函数</h4><p>php中构造方法是对象创建完成后第一个被对象调用的方法。每个类中都有一个构造方法，如果没有显示的声明它，那么类中都会默认存在一个没有参数且内容为空的构造方法</p>
+<p>__construct()：在对象被创建时自动执行的构造方法</p>
+<p>构造方法通常用于执行一些有用的初始化任务，如对成员属性在创建对象时赋予初值</p>
+<p>一个类中只能声明一个构造方法</p>
+<p>构造方法在类中的声明格式：</p>
+<p>function __construct([参数列表])</p>
+<h4 id="二、-destruct-，类的析构函数"><a href="#二、-destruct-，类的析构函数" class="headerlink" title="二、__destruct()，类的析构函数"></a>二、__destruct()，类的析构函数</h4><p>析构方法允许在销毁一个类之前执行一些操作或完成一些功能，如关闭文件</p>
+<p>析构函数不能带有任何参数</p>
+<h4 id="三，-call-，在对象调用一个不可访问方法时调用"><a href="#三，-call-，在对象调用一个不可访问方法时调用" class="headerlink" title="三，__call()，在对象调用一个不可访问方法时调用"></a>三，__call()，在对象调用一个不可访问方法时调用</h4><p>该方法有两个参数，第一个是$function_name 会自动接受不存在的方法名，第二个是$arguments以数组方式接受不存在方法的多个参数</p>
+<p>该方法在调用的方法不存在时会自动调用，程序仍会继续执行</p>
+<h4 id="四，-callStatic-，用静态方式中调用一个不可访问方法时调用"><a href="#四，-callStatic-，用静态方式中调用一个不可访问方法时调用" class="headerlink" title="四，__callStatic()，用静态方式中调用一个不可访问方法时调用"></a>四，__callStatic()，用静态方式中调用一个不可访问方法时调用</h4><p>与__call()大致相同</p>
+<h4 id="五，-get，获得一个类的成员变量时调用"><a href="#五，-get，获得一个类的成员变量时调用" class="headerlink" title="五，__get，获得一个类的成员变量时调用"></a>五，__get，获得一个类的成员变量时调用</h4><h4 id="六，-set，设置一个类的成员变量时调用"><a href="#六，-set，设置一个类的成员变量时调用" class="headerlink" title="六，__set，设置一个类的成员变量时调用"></a>六，__set，设置一个类的成员变量时调用</h4><h4 id="七，-isset-当对不可访问属性调用isset-或empty-时调用"><a href="#七，-isset-当对不可访问属性调用isset-或empty-时调用" class="headerlink" title="七，__isset(),当对不可访问属性调用isset()或empty()时调用"></a>七，__isset(),当对不可访问属性调用isset()或empty()时调用</h4><h4 id="八，-unset-当对不可访问属性调用unset-时调用"><a href="#八，-unset-当对不可访问属性调用unset-时调用" class="headerlink" title="八，__unset(),当对不可访问属性调用unset()时调用"></a>八，__unset(),当对不可访问属性调用unset()时调用</h4><h1 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h1><p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的属性和方法</p>
+<p>PHP中使用关键字extends来继承一个类（class Child extend Parent ）</p>
+<p>父类也称为基类 </p>
+<p>一个父类可以拥有多个子类，一个子类只能拥有一个父类</p>
+<h4 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h4><p>如果从父类继承的方法不能满足子类的需求，可以对其进行改写</p>
+<h4 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h4><p>PHP对属性或方法的访问控制，是通过在前面添加关键字public（公有）、protected（受保护）、private（私有）来实现的</p>
+<p>如果用var定义则被视为为public</p>
+<p>public：公有的类成员可以在任何地方被访问</p>
+<p>protected：受保护的类成员则只能被其自身以及子类和父类访问访问</p>
+<p>private：私有的类成员只能被其自身访问</p>
+<p>在类中函数可以访问公有、受保护、私有的属性</p>
+<p>类的私有和受保护的属性虽然不能在类外直接访问，但类中的公有方法可以访问私有和受保护的属性，因此可以通过在类外调用这个公共方法来间接获取到私有属性的内容</p>
+<p>在子类中可以通过关键字parent（parent：：+方法）来访问父类的方法，也可以使用$this关键字</p>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>使用接口（interface），可以指定某个类必须实现哪些方法p，但不需要定义这些方法的具体内容</p>
+<p>接口是通过interface关键字来定义的，就像定义一个标准的类一样，但其中定义所有的方法都是空的</p>
+<p>例如</p>
+<p>interface Person{</p>
+<p>const NAME&#x3D;“这个是常量”</p>
+<p>public function get_name();</p>
+<p>public function set_name($name);</p>
+<p>}</p>
+<p>接口中所有方法都是公有的，方法可以允许有参数</p>
+<p>接口中可以使用常数，但是不能使用变量</p>
+<p>要实现一个接口，需使用implements操作符，类中必须实现接口中定义的所有方法，否则会报错，类可以实现多个接口，用逗号来分隔多个接口的名称</p>
+<p>例如</p>
+<p>class p1 implements Person{</p>
+<p>public function set_name($name)</p>
+<p>{……}</p>
+<p>public function get_name()</p>
+<p>{……}</p>
+<p>}</p>
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>任何一个类，如果类中至少有一个方法被声明为抽象的，那么这个类就必须被声明为抽象的</p>
+<p>被声明为抽象的方法不能有具体的内容，必须为空，可以有参数</p>
+<p>定义为抽象的类不能被实例化</p>
+<p>使用abstract关键字定义抽象类和方法</p>
+<p>继承一个抽象类的时候，子类必须定义父类所有的抽象方法。另外这些方法的访问控制必须和父类中的一样（或者更加宽松）例如某个抽象方法在父类被声明为受保护的，那么在子类中就应该声明为受保护的或者公有的，而不能被声明为私有的</p>
+<h1 id="Static关键字"><a href="#Static关键字" class="headerlink" title="Static关键字"></a>Static关键字</h1><p>声明类属性或方法为static时，就可以不实例化而直接访问</p>
+<p>echo Person(类名)::$name(属性名)；</p>
+<p>echo Person(类名)::getname(方法名)；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/29/php3/" data-id="cuidk7Mi5lgeSzjE2pNu2Un_S" data-title="php3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据库1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/12/23/php2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/">sql注入1</a>
+          </li>
+        
+          <li>
+            <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/29/php3/">php3</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/23/php2/">php2</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/16/php1/">php1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
