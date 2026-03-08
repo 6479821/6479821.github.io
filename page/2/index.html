@@ -71,6 +71,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-post11-15-sql注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" class="article-date">
+  <time class="dt-published" datetime="2025-11-15T05:45:07.000Z" itemprop="datePublished">2025-11-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/">post11.15(sql注入)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#一 SQL介绍</p>
+<p><em>1</em>  SQL全称是结构化查询语言，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及 查询、更新和管理关系数据库系统，同时也是数据库脚本文件的扩展名。</p>
+<p><em>2</em>  SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
+<p>#二 工具:Sqlmap</p>
+<p> <em>1</em> Sqlmap全面支持六种SQL注入技术：</p>
+<p>（1）  基于布尔类型的盲注：即可以根据返回页面判断条件真假的注入。</p>
+<p>（2）  基于时间的盲注：即不能根据页面返回的内容判断任何信息，要用条件语句查看时间延迟语句是否已执行(即页面返回时间是否增加)来判断。</p>
+<p>（3）  基于报错注入：即页面会返回错误信息，或者把注入的语句的结果直接返回到页面中。</p>
+<p>（4）  联合查询注入：在可以使用Union的情况下的注入。</p>
+<p>（5） 堆查询注入：可以同时执行多条语句时的注入。</p>
+<p>（6）  带外注入：构造SQL语句，这些语句在呈现给数据库时会触发数据库系统创建与攻击者控制的外部服务器的连接。以这种方式，攻击者可以收集数据或可能控制数据库的行为。</p>
+<p><em>2</em>   使用 Sqlmap 对一个注入点进行测试时，可以使用 <code>-v x</code> 参数指定回显信息的复杂度，x范围为[0~6]，共有 7 个等级，默认为 1。</p>
+<ul>
+<li>0：只显示python错误以及严重的信息。</li>
+<li>1：同时显示基本信息和警告信息。（默认）</li>
+<li>2：同时显示debug信息。</li>
+<li>3：同时显示注入的payload。</li>
+<li>4：同时显示HTTP请求。</li>
+<li>5：同时显示HTTP响应头。</li>
+<li>6：同时显示HTTP响应页面。</li>
+<li>如果想看到 Sqlmap 发送的测试 payload 最好的等级就是3，例：sqlmap.py -v 3 -u “<a target="_blank" rel="noopener" href="http://www.xxx.com/a.php?id=x">http://www.xxx.com/a.php?id=x</a>“</li>
+</ul>
+<p>#三 sqlmap的使用</p>
+<p><em>1</em>  判断是否存在sql注入：</p>
+<p>假设目标注入点是 <code>http://127.0.0.1/sqli-labs/Less-1/?id=1</code>，判断其是否存在注入的命令如下：</p>
+<p>sqlmap.py -u <a target="_blank" rel="noopener" href="http://127.0.0.1/sqli-labs/Less-1/?id=1">http://127.0.0.1/sqli-labs/Less-1/?id=1</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" data-id="cuidC9zZu91JBdlYSLtfAevDQ" data-title="post11.15(sql注入)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-11-10-11-16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/11/13/11-10-11-16/" class="article-date">
@@ -106,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/13/11-10-11-16/" data-id="cuidpADFRRK1S9RdbtDyPi13u" data-title="11.10-11.16" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/13/11-10-11-16/" data-id="cuidbVz_fOrC_XUBzq9IAk9nx" data-title="11.10-11.16" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -157,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/12/hello-world/" data-id="cuid65GgosFeVNeYuDL022IOk" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/12/hello-world/" data-id="cuidK3q2FzFO7ajrlUeutJxGc" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -192,7 +256,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li></ul>
     </div>
   </div>
 
@@ -203,6 +267,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/03/03/sql%E6%B3%A8%E5%85%A53/">sql注入3</a>
+          </li>
         
           <li>
             <a href="/2026/02/23/sql%E6%B3%A8%E5%85%A52/">sql注入2</a>
@@ -218,10 +286,6 @@
         
           <li>
             <a href="/2025/12/29/php3/">php3</a>
-          </li>
-        
-          <li>
-            <a href="/2025/12/23/php2/">php2</a>
           </li>
         
       </ul>
