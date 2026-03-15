@@ -71,6 +71,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-文件上传漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time class="dt-published" datetime="2025-11-22T09:34:32.000Z" itemprop="datePublished">2025-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="如何预防（文件上传校验方式）"><a href="#如何预防（文件上传校验方式）" class="headerlink" title="如何预防（文件上传校验方式）"></a>如何预防（文件上传校验方式）</h1><h2 id="前端校验"><a href="#前端校验" class="headerlink" title="前端校验"></a>前端校验</h2><p>在浏览器校验与后端无关，无法用bp抓包（只在浏览器校验，不会发送请求）</p>
+<h2 id="WAF校验"><a href="#WAF校验" class="headerlink" title="WAF校验"></a>WAF校验</h2><p>防火墙</p>
+<h2 id="后端校验"><a href="#后端校验" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>1  检查后缀：白名单和黑名单</p>
+<p>2  检查内容：文件头，大小等</p>
+<p>3  其他</p>
+<h1 id="如何绕过"><a href="#如何绕过" class="headerlink" title="如何绕过"></a>如何绕过</h1><p>判断校验方式（属于前端校验还是后端校验）</p>
+<p>看浏览器是否有给服务器发请求</p>
+<p>上传文件后若发现左上角刷新按钮（圈圈）在转，说明向后端发送了请求，即为后端校验，反之为前端校验</p>
+<h2 id="前端校验-1"><a href="#前端校验-1" class="headerlink" title="前端校验"></a>前端校验</h2><p>所有的前端校验等于没有</p>
+<p><u><em>绕过方式</em> </u> </p>
+<p>1  可以右键网页点击检查（F12），点击设置，找到调试程序，勾选停用JavaScript，即可上传其他后缀名的文件</p>
+<p>原理：前端校验使用的编程语言为JavaScript，停用JavaScript后校验失效</p>
+<p>2  F12找到校验函数删除即可，例：onsubmit&#x3D;“return checkFile（）”，删除“return checkFile（）”即可（在谷歌与edge浏览器中一般不适用，火狐可用）</p>
+<h2 id="后端校验-1"><a href="#后端校验-1" class="headerlink" title="后端校验"></a>后端校验</h2><h2 id="MIME类型检测"><a href="#MIME类型检测" class="headerlink" title="MIME类型检测"></a>MIME类型检测</h2><p>MIME是描述消息内容类型的因特网标准，用来表示文档，文件或字节流的性质和格式。在HTTP数据包中在Content-Type字段显示</p>
+<p>常见的MIME类型（通用型）：</p>
+<p>1  超文本标记语言.html文件：text&#x2F;html</p>
+<p>2  xml文档.xml：text&#x2F;xml</p>
+<p>3  普通文本.txt：text&#x2F;plain</p>
+<p>4  PDF文档.pdf：application&#x2F;pdf</p>
+<p>5  PNG 图像.png：image&#x2F;png</p>
+<p>6  GIF图形.gif：image&#x2F;gif</p>
+<p>7  JPEG图形.jpeg.jpg：image&#x2F;jpeg</p>
+<p>绕过方式：</p>
+<p>1（后端过滤，在服务端对数据包的MIME进行检查）   用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到第二个Content-Type字段，将其内容改为image&#x2F;png，例如  Content-Type：application&#x2F;octet-stream改为Content-Type：image&#x2F;png</p>
+<p>2 （后端文件名过滤，禁止上传.asp|.aspx|.php|.jsp后缀文件） 用bp对网页进行抓包，选择要上传的木马文件，打开bp的拦截功能后点击上传，找到bp拦截到的数据包，找到Content-Dispositoin，在文件明后添加：：$DATA  </p>
+<p>若源代码中存在函数检验：：$DATA若发现则替换其为空字符，则可以进行双写</p>
+<p>访问url时要将url中的$DATA删除才可正常访问</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/22/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="cuid7CaWreYI8bV8LzPQA-nnK" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-post11-15-sql注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" class="article-date">
@@ -123,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" data-id="cuidC9zZu91JBdlYSLtfAevDQ" data-title="post11.15(sql注入)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/15/post11-15-sql%E6%B3%A8%E5%85%A5/" data-id="cuidM-GJBp-JTvmoRgLwREnl3" data-title="post11.15(sql注入)" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -170,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/13/11-10-11-16/" data-id="cuidbVz_fOrC_XUBzq9IAk9nx" data-title="11.10-11.16" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/13/11-10-11-16/" data-id="cuidKIg675AWRE0lxkF2Si8iF" data-title="11.10-11.16" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -221,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/12/hello-world/" data-id="cuidK3q2FzFO7ajrlUeutJxGc" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/12/hello-world/" data-id="cuid6AHb6h4BUijG52q6MGL0H" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -269,6 +334,10 @@
       <ul>
         
           <li>
+            <a href="/2026/03/09/sql%E6%B3%A8%E5%85%A54/">sql注入4</a>
+          </li>
+        
+          <li>
             <a href="/2026/03/03/sql%E6%B3%A8%E5%85%A53/">sql注入3</a>
           </li>
         
@@ -282,10 +351,6 @@
         
           <li>
             <a href="/2026/02/02/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
-          </li>
-        
-          <li>
-            <a href="/2025/12/29/php3/">php3</a>
           </li>
         
       </ul>
